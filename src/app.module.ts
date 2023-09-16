@@ -1,11 +1,10 @@
 import { Module } from '@nestjs/common';
-import { StoreDataModule } from './storeData/store-data.module';
+import { StoreDataModule } from './storeDataModule/store-data.module';
 import { MongooseModule } from '@nestjs/mongoose';
-import 'dotenv/config';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(process.env.MONGODB_URI_ATLAS),
+    MongooseModule.forRoot('mongodb://localhost:27018/turbotraffic'),
     StoreDataModule,
   ],
   controllers: [],

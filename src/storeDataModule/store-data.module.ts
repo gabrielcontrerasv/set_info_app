@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { StoreController } from './store-data.controller';
-import { Store, StoreSchema } from './schema/store.schema';
+import { StoreSchema } from './schema/store.schema';
 import { MongooseModule } from '@nestjs/mongoose';
 import { StoreService } from './store-data.service';
 
