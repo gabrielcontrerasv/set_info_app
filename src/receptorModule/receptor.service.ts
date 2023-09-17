@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { MessagePattern } from '@nestjs/microservices';
 import { ReceptorDocument } from './schema/receptor.schema';
-import { receptorDataDTO } from './Dto/receptor.dto';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 
@@ -12,10 +11,9 @@ export class ReceptorService {
     private readonly receptorDataModel: Model<ReceptorDocument>,
   ) {}
 
-  @MessagePattern({ cmd: 'storedata' })
-  async handleMessage(data: receptorDataDTO) {
+  @MessagePattern({ cmd: 'store' })
+  async handleMessage(data: string) {
     try {
-      console.log('Evento ejecutado');
       return await this.receptorDataModel.create(data);
     } catch (error) {
       throw new Error(`Error al almacenar los datos: ${error.message}`);

@@ -7,7 +7,7 @@ import { Transport } from '@nestjs/microservices';
 async function bootstrap() {
   const rabbit = await NestFactory.createMicroservice(ReceptorModule, {
     transport: Transport.RMQ,
-    urls: ['amqp://localhost:5672'],
+    urls: ['amqp://rabbit-nest:5672'],
     queue: 'storedata',
     queueOptions: {
       durable: false,

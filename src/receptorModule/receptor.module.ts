@@ -7,14 +7,12 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27018/turbotraffic'),
-    MongooseModule.forFeature([{ name: 'Receptor', schema: ReceptorSchema }]),
     ClientsModule.register([
       {
-        name: 'PRODUCER_SERVICE',
+        name: 'RECEPTOR_SERVICE',
         transport: Transport.RMQ,
         options: {
-          urls: ['amqp://localhost:5672'],
+          urls: ['amqp://rabbit-nest:5672'],
           queue: 'storedata',
           queueOptions: {
             durable: false,
@@ -22,6 +20,8 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         },
       },
     ]),
+    MongooseModule.forRoot('mongodb://localhost:27018/turbotraffic'),
+    MongooseModule.forFeature([{ name: 'Receptor', schema: ReceptorSchema }]),
   ],
   controllers: [ReceptorController],
   providers: [ReceptorService],
