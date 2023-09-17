@@ -4,8 +4,9 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27018/turbotraffic'),
+    MongooseModule.forRoot('mongodb://mongodb:27018/turbotraffic'),
     StoreDataModule,
+
   ],
   controllers: [],
   providers: [],

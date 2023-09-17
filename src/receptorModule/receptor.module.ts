@@ -20,7 +20,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         },
       },
     ]),
-    MongooseModule.forRoot('mongodb://localhost:27018/turbotraffic'),
+    MongooseModule.forRoot('mongodb://mongodb:27018/turbotraffic'),
     MongooseModule.forFeature([{ name: 'Receptor', schema: ReceptorSchema }]),
   ],
   controllers: [ReceptorController],
