@@ -8,9 +8,8 @@ export class ReceptorController {
 
   async createData(data: receptorDataDTO) {
     try {
-      console.log('Evento ejecutado');
-      //const createdData = await this.receptorService.handleMessage(data.data);
-      //return { message: 'Datos almacenados correctamente', data: createdData };
+      const createdData = await this.receptorService.handleMessage(data.data);
+      return { message: 'Datos almacenados correctamente', data: createdData };
     } catch (error) {
       return { error: error.message };
     }

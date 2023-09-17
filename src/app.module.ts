@@ -3,11 +3,7 @@ import { StoreDataModule } from './storeDataModule/store-data.module';
 import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
-  imports: [
-    MongooseModule.forRoot('mongodb://mongodb:27018/turbotraffic'),
-    StoreDataModule,
-
-  ],
+  imports: [MongooseModule.forRoot(process.env.MONGO_URL), StoreDataModule],
   controllers: [],
   providers: [],
 })
